@@ -1,12 +1,7 @@
 import { Link } from 'react-router-dom';
 
-import { useState } from 'react';
-import { Bars3Icon } from '@heroicons/react/20/solid';
-import { link } from 'fs';
 
-type Props = {}
-
-const SideNavBar = (props: Props) => {
+const SideNavBar = () => {
 
     const flexBetween = "flex items-center justify-center flex-col";
     const textType = "text-white text-2xl text-center";

@@ -1,15 +1,9 @@
 import {Outlet} from 'react-router-dom';
 
 import SideNavBar from "./SideNavBar"
-import Planning from './Planning';
-import Projects from './Projects';
-import Tasks from './Tasks';
-import Analytic from './Analytic';
 
 
-type Props = {}
-
-const Home = (props: Props) => {
+const Home = () => {
   return (
     <div className={`flex h-full justify-between`}>
         <SideNavBar/>  
