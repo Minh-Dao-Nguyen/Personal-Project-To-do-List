@@ -1,0 +1,18 @@
+[
+  {
+    "customerID": 1,
+    "name": "Project 1",
+    "description": "this is a test Project",
+    "status": "completed",
+    "sprint": 1,
+    "category": "personal project"
+  },
+  {
+    "customerID": 1,
+    "name": "Project 2",
+    "description": "this is a test Project 2",
+    "status": "todo",
+    "sprint": 1,
+    "category": "work project"
+  }
+]
