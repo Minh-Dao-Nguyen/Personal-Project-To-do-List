@@ -1,4 +1,4 @@
-package Backend;
+package com.minhdao.Backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
