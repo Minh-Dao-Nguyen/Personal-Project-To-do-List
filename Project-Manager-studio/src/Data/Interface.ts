@@ -8,3 +8,16 @@ interface Project {
     category: string
 }
 
+interface TaskData {
+    id: string,
+    projectID: string,
+    customerID: string,
+    name: string,
+    description: string,
+    status:string
+}
+
+interface Customer {
+    id: string,
+    name: string
+}
