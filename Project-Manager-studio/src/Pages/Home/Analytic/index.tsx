@@ -1,7 +1,5 @@
 
-type Props = {}
-
-const Analytic = (props: Props) => {
+const Analytic = () => {
   return (
     <div className={`h-full w-full bg-primary-gray flex justify-center`}>
       Analytic
