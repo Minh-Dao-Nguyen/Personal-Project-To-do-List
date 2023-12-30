@@ -7,6 +7,7 @@ type Props = {
 
 const StatusBox = ({status, taskList}: Props) => {
     const titleText = "text-xl text-center text-white";
+
   return (
     <div className={` bg-secondary-gray w-1/4`}>
         <div className={`${titleText} p-4`}>

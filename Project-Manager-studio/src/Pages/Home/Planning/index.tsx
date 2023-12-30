@@ -1,19 +1,26 @@
 import StatusBox from "./StatusBox";
-import {useRef, useState} from "react";
-import {GetTaskTodo} from "@/Data/Service/TaskData.ts";
+import {useEffect, useState} from "react";
+import {GetTaskComplete, GetTaskProgress, GetTaskTodo} from "@/Data/Service/TaskData.ts";
+import {GetTaskData} from "@/Data/Service/MapData.ts";
 
 const Planning = () => {
     const [todoTaskList, setTodoTaskList] = useState<TaskData[]>([]);
-    useRef(async () => {
-        const SetTaskList = async () => {
-            const taskList = await GetTaskTodo();
-            setTodoTaskList(taskList)
-        }
-        SetTaskList()
-        , []
-    });
+    const [progressTaskList, setProgressTaskList] = useState<TaskData[]>([]);
+    const [completeTaskList, setCompleteTaskList] = useState<TaskData[]>([]);
 
-    console.log(todoTaskList)
+    const makeTaskList = async () => {
+        const taskList = await GetTaskData();
+        const todoList = GetTaskTodo(taskList);
+        setTodoTaskList(todoList)
+        const progressList = GetTaskProgress(taskList);
+        setProgressTaskList(progressList);
+        const completeList = GetTaskComplete(taskList);
+        setCompleteTaskList(completeList);
+    }
+
+    useEffect(() => {
+        makeTaskList()
+    }, []);
 
     const weekText = "text-2xl text-left text-white";
     const flexBetween = "flex items-center justify-center justify-between";
@@ -25,8 +32,8 @@ const Planning = () => {
       </div>
       <div className={`${flexBetween} h-full`}>
         <StatusBox status="Todo" taskList={todoTaskList}/>
-        <StatusBox status="In Progress"/>
-        <StatusBox status="Complete"/>
+        <StatusBox status="In Progress" taskList={progressTaskList}/>
+        <StatusBox status="Complete" taskList={completeTaskList}/>
       </div>
     </div>
   )
