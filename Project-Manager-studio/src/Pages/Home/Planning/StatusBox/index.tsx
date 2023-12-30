@@ -5,15 +5,19 @@ type Props = {
     taskList: TaskData[]
 }
 
+function test() {
+    console.log("Drag detected")
+}
+
 const StatusBox = ({status, taskList}: Props) => {
     const titleText = "text-xl text-center text-white";
 
   return (
-    <div className={` bg-secondary-gray w-1/4`}>
+    <div className={` bg-secondary-gray w-1/4`} >
         <div className={`${titleText} p-4`}>
             {status}
         </div>
-        <div className={`border-gray-300 border-t-2 h-96`}>
+        <div className={`border-gray-300 border-t-2 h-96`} onDrop={test} onDragOver={test}>
             {taskList.map((item, index) => (
                 <TaskBox task={item} key={index}/>
             ))}
