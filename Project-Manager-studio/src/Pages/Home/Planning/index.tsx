@@ -7,6 +7,7 @@ const Planning = () => {
     const [todoTaskList, setTodoTaskList] = useState<TaskData[]>([]);
     const [progressTaskList, setProgressTaskList] = useState<TaskData[]>([]);
     const [completeTaskList, setCompleteTaskList] = useState<TaskData[]>([]);
+    const [taskChange, triggerTaskChange] = useState<boolean>(false);
 
     const makeTaskList = async () => {
         const taskList = await GetTaskData();
@@ -20,7 +21,17 @@ const Planning = () => {
 
     useEffect(() => {
         makeTaskList()
-    }, []);
+    }, [taskChange]);
+
+    const handleOnDrop = (e: React.DragEvent, boxStatus: string) => {
+        const taskID = e.dataTransfer.getData("TaskDataTransfer") as string;
+
+        triggerTaskChange(!taskChange);
+    }
+
+    const handleOnDrag = (e: React.DragEvent, taskID: string) => {
+        e.dataTransfer.setData("TaskDataTransfer", taskID);
+    }
 
     const weekText = "text-2xl text-left text-white";
     const flexBetween = "flex items-center justify-center justify-between";
@@ -31,9 +42,9 @@ const Planning = () => {
           Week 1
       </div>
       <div className={`${flexBetween} h-full`}>
-        <StatusBox status="Todo" taskList={todoTaskList}/>
-        <StatusBox status="In Progress" taskList={progressTaskList}/>
-        <StatusBox status="Complete" taskList={completeTaskList}/>
+        <StatusBox status="Todo" taskList={todoTaskList} handleOnDropFunc={handleOnDrop} handleOnDragFunc={handleOnDrag}/>
+        <StatusBox status="In Progress" taskList={progressTaskList} handleOnDropFunc={handleOnDrop} handleOnDragFunc={handleOnDrag}/>
+        <StatusBox status="Complete" taskList={completeTaskList} handleOnDropFunc={handleOnDrop} handleOnDragFunc={handleOnDrag}/>
       </div>
     </div>
   )

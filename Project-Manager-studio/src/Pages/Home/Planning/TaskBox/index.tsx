@@ -1,11 +1,13 @@
 
 interface Props {
     task: TaskData;
+    handleOnDragFunc: () => void;
 }
-const TaskBox = ({task}: Props) => {
 
+const TaskBox = ({task, handleOnDragFunc}: Props) => {
     return (
-        <div className={'p-2 border-2 border-aqua-300 mb-2 mt-2'} draggable={true}>
+        <div className={'p-2 border-2 border-aqua-300 mb-2 mt-2'} draggable={true}
+             onDragStart={(e) => handleOnDragFunc(e, task._id)}>
             <div className={'text-white text-xl'}>
                 {task.name}
             </div>

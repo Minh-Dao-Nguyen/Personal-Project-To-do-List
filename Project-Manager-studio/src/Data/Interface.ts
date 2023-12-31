@@ -1,5 +1,5 @@
 interface Project {
-    id: string,
+    _id: string,
     customerID: string,
     name: string,
     description: string,
@@ -9,7 +9,7 @@ interface Project {
 }
 
 interface TaskData {
-    id: string,
+    _id: string,
     projectID: string,
     customerID: string,
     name: string,
@@ -18,6 +18,6 @@ interface TaskData {
 }
 
 interface Customer {
-    id: string,
+    _id: string,
     name: string
 }

@@ -3,13 +3,15 @@ import TaskBox from "@/Pages/Home/Planning/TaskBox";
 type Props = {
     status: string,
     taskList: TaskData[]
+    handleOnDropFunc: () => void
+    handleOnDragFunc: () => void
 }
 
-function test() {
-    console.log("Drag detected")
+function handleOnDragOver(e: React.DragEvent) {
+    e.preventDefault();
 }
 
-const StatusBox = ({status, taskList}: Props) => {
+const StatusBox = ({status, taskList, handleOnDropFunc, handleOnDragFunc}: Props) => {
     const titleText = "text-xl text-center text-white";
 
   return (
@@ -17,9 +19,11 @@ const StatusBox = ({status, taskList}: Props) => {
         <div className={`${titleText} p-4`}>
             {status}
         </div>
-        <div className={`border-gray-300 border-t-2 h-96`} onDrop={test} onDragOver={test}>
+        <div className={`border-gray-300 border-t-2 h-96`}
+             onDrop={(e) => handleOnDropFunc(e, status.toLowerCase())}
+             onDragOver={handleOnDragOver} >
             {taskList.map((item, index) => (
-                <TaskBox task={item} key={index}/>
+                <TaskBox task={item} key={index} handleOnDragFunc={handleOnDragFunc}/>
             ))}
         </div>
     </div>
