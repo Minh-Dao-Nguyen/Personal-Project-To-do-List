@@ -21,4 +21,15 @@ public class TaskService {
     public void changeStatus(Task task) {
         System.out.println(task);
     }
+
+    public void addTask(Task task) {
+        Task newTask = new Task(
+                task.getProjectID(),
+                task.getCustomerID(),
+                task.getName(),
+                task.getDescription(),
+                task.getStatus());
+
+        taskRepository.insert(newTask);
+    }
 }

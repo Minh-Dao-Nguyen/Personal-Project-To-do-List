@@ -19,8 +19,11 @@ public class TaskController {
         return taskService.getAllTask();
     }
 
-    @PostMapping(path = "/changeStatus")
+    @PostMapping( "/changeStatus")
     public void changeTaskStatus(@RequestBody Task task) {
         taskService.changeStatus(task);
     }
+
+    @PostMapping( "/add")
+    public void addTask(@RequestBody Task task) { taskService.addTask(task);}
 }
