@@ -3,14 +3,12 @@ package com.minhdao.Backend.Controller;
 import com.minhdao.Backend.Model.Task;
 import com.minhdao.Backend.Service.TaskService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/tasks")
+@RequestMapping( "api/v1/tasks")
 @AllArgsConstructor
 public class TaskController {
 
@@ -19,5 +17,10 @@ public class TaskController {
     @GetMapping
     public List<Task> fetchAllTask() {
         return taskService.getAllTask();
+    }
+
+    @PostMapping(path = "/changeStatus")
+    public void changeTaskStatus(@RequestBody Task task) {
+        taskService.changeStatus(task);
     }
 }

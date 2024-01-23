@@ -17,4 +17,8 @@ public class TaskService {
     public List<Task> getAllTask() {
         return taskRepository.findAll();
     }
+
+    public void changeStatus(Task task) {
+        System.out.println(task);
+    }
 }

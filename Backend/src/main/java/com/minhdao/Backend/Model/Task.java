@@ -22,4 +22,52 @@ public class Task {
         this.description = description;
         this.status = status;
     }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public String getProjectID() {
+        return projectID;
+    }
+
+    public String getCustomerID() {
+        return customerID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    public void setProjectID(String projectID) {
+        this.projectID = projectID;
+    }
+
+    public void setCustomerID(String customerID) {
+        this.customerID = customerID;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
