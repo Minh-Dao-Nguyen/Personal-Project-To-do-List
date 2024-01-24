@@ -2,8 +2,10 @@ import StatusBox from "./StatusBox";
 import {useEffect, useState} from "react";
 import {GetTaskComplete, GetTaskProgress, GetTaskTodo} from "@/Data/Service/TaskData.ts";
 import {GetTaskData} from "@/Data/Service/MapData.ts";
+import {ChangeTaskStatus} from "@/Data/PostData.ts";
 
 const Planning = () => {
+    const [taskList,  setTaskList]  = useState<TaskData[]>([])
     const [todoTaskList, setTodoTaskList] = useState<TaskData[]>([]);
     const [progressTaskList, setProgressTaskList] = useState<TaskData[]>([]);
     const [completeTaskList, setCompleteTaskList] = useState<TaskData[]>([]);
@@ -11,6 +13,8 @@ const Planning = () => {
 
     const makeTaskList = async () => {
         const taskList = await GetTaskData();
+        const allTaskList = await GetTaskData();
+        setTaskList(allTaskList);
         const todoList = GetTaskTodo(taskList);
         setTodoTaskList(todoList)
         const progressList = GetTaskProgress(taskList);
@@ -20,13 +24,18 @@ const Planning = () => {
     }
 
     useEffect(() => {
-        makeTaskList()
+        makeTaskList();
     }, [taskChange]);
 
-    const handleOnDrop = (e: React.DragEvent, boxStatus: string) => {
+    const handleOnDrop = (e: React.DragEvent, boxStatus: string): void => {
         const taskID = e.dataTransfer.getData("TaskDataTransfer") as string;
+        const targetTask = taskList.find((task) => {return task._id == taskID});
+        if(targetTask) {
+            targetTask.status = boxStatus;
+            ChangeTaskStatus(targetTask);
+            triggerTaskChange(!taskChange);
+        }
 
-        triggerTaskChange(!taskChange);
     }
 
     const handleOnDrag = (e: React.DragEvent, taskID: string) => {
