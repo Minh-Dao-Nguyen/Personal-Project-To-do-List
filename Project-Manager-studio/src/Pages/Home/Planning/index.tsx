@@ -10,32 +10,34 @@ const Planning = () => {
     const [progressTaskList, setProgressTaskList] = useState<TaskData[]>([]);
     const [completeTaskList, setCompleteTaskList] = useState<TaskData[]>([]);
     const [taskChange, triggerTaskChange] = useState<boolean>(false);
+    const [taskChange2, triggerTaskChange2] = useState(false);
 
-    const makeTaskList = async () => {
-        const taskList = await GetTaskData();
-        const allTaskList = await GetTaskData();
-        setTaskList(allTaskList);
+    useEffect(() => {
+        const makeTaskList = async () => {
+            const allTaskList = await GetTaskData();
+            setTaskList(allTaskList);
+            triggerTaskChange2(!taskChange2);
+        }
+        makeTaskList();
+    }, [taskChange]);
+
+    useEffect(() => {
         const todoList = GetTaskTodo(taskList);
         setTodoTaskList(todoList)
         const progressList = GetTaskProgress(taskList);
         setProgressTaskList(progressList);
         const completeList = GetTaskComplete(taskList);
         setCompleteTaskList(completeList);
-    }
+    }, [taskChange2]);
 
-    useEffect(() => {
-        makeTaskList();
-    }, [taskChange]);
-
-    const handleOnDrop = (e: React.DragEvent, boxStatus: string): void => {
+    const handleOnDrop = async (e: React.DragEvent, boxStatus: string) => {
         const taskID = e.dataTransfer.getData("TaskDataTransfer") as string;
         const targetTask = taskList.find((task) => {return task._id == taskID});
         if(targetTask) {
             targetTask.status = boxStatus;
-            ChangeTaskStatus(targetTask);
+            await ChangeTaskStatus(targetTask);
             triggerTaskChange(!taskChange);
         }
-
     }
 
     const handleOnDrag = (e: React.DragEvent, taskID: string) => {

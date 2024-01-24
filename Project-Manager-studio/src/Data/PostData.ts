@@ -1,4 +1,4 @@
-export function ChangeTaskStatus(task: TaskData) {
+export async function ChangeTaskStatus(task: TaskData) {
     const headers: Headers = new Headers();
     headers.set('Content-Type', 'application/json')
     headers.set('Accept', 'application/json')
