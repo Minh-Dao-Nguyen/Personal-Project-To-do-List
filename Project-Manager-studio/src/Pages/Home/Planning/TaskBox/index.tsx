@@ -1,7 +1,7 @@
 
 interface Props {
     task: TaskData;
-    handleOnDragFunc: () => void;
+    handleOnDragFunc: (e: React.DragEvent, taskID: string) => void;
 }
 
 const TaskBox = ({task, handleOnDragFunc}: Props) => {

@@ -14,6 +14,7 @@ export default {
         "aqua-300": "#1A4A57",
         "blue-400": "#161B22",
         "hover-gray-200": "#2D333B",
+        "gray-bg": "#283038",
       },
       fontFamily: {
         dmsans: ["DM Sans", "sans-serif"],

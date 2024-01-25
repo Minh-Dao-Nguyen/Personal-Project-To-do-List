@@ -10,9 +10,10 @@ export async function ChangeTaskStatus(task: TaskData) {
             body: JSON.stringify(task)
         })
 
-
+    fetch(request)
+    /*
     return fetch(request)
         .then(res => {
-            //console.log("got response:", res)
-        })
+            console.log("got response:", res)
+        })*/
 }

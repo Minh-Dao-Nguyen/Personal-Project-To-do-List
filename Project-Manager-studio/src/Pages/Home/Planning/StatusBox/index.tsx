@@ -3,8 +3,8 @@ import TaskBox from "@/Pages/Home/Planning/TaskBox";
 type Props = {
     status: string,
     taskList: TaskData[]
-    handleOnDropFunc: () => void
-    handleOnDragFunc: () => void
+    handleOnDropFunc: (e: React.DragEvent, boxStatus: string) => void
+    handleOnDragFunc: (e: React.DragEvent, taskID: string) => void
 }
 
 function handleOnDragOver(e: React.DragEvent) {
