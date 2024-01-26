@@ -19,7 +19,7 @@ public class TaskService {
     }
 
     public void changeStatus(Task task) {
-        System.out.println(task);
+        taskRepository.save(task);
     }
 
     public void addTask(Task task) {

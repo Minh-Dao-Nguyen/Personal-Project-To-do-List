@@ -18,4 +18,16 @@ public class ProjectService {
     public List<Project> getAllProjects() {
         return projectRepository.findAll();
     }
+
+    public void addProject(Project project) {
+        Project newProject = new Project(
+                project.getCustomerID(),
+                project.getName(),
+                project.getDescription(),
+                project.getStatus(),
+                project.getSprint(),
+                project.getCategory()
+                );
+        projectRepository.insert(newProject);
+    }
 }
