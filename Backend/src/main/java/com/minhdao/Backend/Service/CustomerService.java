@@ -18,4 +18,11 @@ public class CustomerService {
     public List<Customer> getAllCustomer() {
         return customerRepository.findAll();
     }
+
+    public void addCustomer(Customer customer) {
+        Customer newCustomer = new Customer(
+                customer.getName()
+        );
+        customerRepository.insert(newCustomer);
+    }
 }
