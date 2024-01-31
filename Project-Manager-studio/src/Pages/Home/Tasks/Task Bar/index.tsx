@@ -11,7 +11,7 @@ const TaskBar = ( {task}: Props) => {
                         {task.name}
                     </span>
                 <span className={'flex flex-col justify-center pr-10'}>
-                        status: {task.status}
+                        project: {task.projectID}, status: {task.status}
                     </span>
             </div>
         </div>
