@@ -1,10 +1,28 @@
+import {useEffect, useState} from "react";
+import TaskBar from "@/Pages/Home/Tasks/Task Bar";
+import {GetTaskData} from "@/Data/Service/MapData.ts";
 
 const Tasks = () => {
-  return (
-    <div className={`h-full w-full bg-primary-gray flex justify-center`}>
-      Tasks
+
+    const[taskList, setTaskList] = useState<TaskData[]>([])
+
+    useEffect(() => {
+        const makeTaskList = async () => {
+            const list = await GetTaskData();
+            setTaskList(list)
+        }
+        makeTaskList()
+    }, []);
+
+    return (
+        <div className={`h-full w-full bg-primary-gray flex justify-center`}>
+            <div className={'flex flex-col justify-center w-full p-20'}>
+                {taskList.map((item, index) => (
+                    <TaskBar task={item} key={index} />
+                ))}
+            </div>
     </div>
-  )
+    )
 }
 
 export default Tasks;
