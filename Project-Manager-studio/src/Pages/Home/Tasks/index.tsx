@@ -14,6 +14,8 @@ const Tasks = () => {
         makeTaskList()
     }, []);
 
+
+
     return (
         <div className={`h-full w-full bg-primary-gray flex justify-center`}>
             <div className={'flex flex-col justify-center w-full p-20'}>
