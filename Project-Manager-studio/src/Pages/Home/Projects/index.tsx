@@ -17,14 +17,14 @@ const Projects = () => {
     return (
         <div className={`h-full w-full bg-primary-gray flex justify-center`}>
             <div className={'w-full h-full flex-col flex justify-center'}>
-            <div className={'w-full flex pl-20'}>
-                <button className={'border-2 p-5'}> Add new </button>
-            </div>
-            <div className={'flex flex-col justify-center w-full p-20'}>
-                {projectList.map((item, index) => (
-                    <ProjectBar project={item} key={index} />
-                ))}
-            </div>
+                <div className={'w-full flex pl-20'}>
+                    <button className={'border-2 p-5'}> Add new </button>
+                </div>
+                <div className={'flex flex-col justify-center w-full p-20'}>
+                    {projectList.map((item, index) => (
+                        <ProjectBar project={item} key={index} />
+                    ))}
+                </div>
             </div>
         </div>
     )
