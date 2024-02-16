@@ -20,7 +20,7 @@ const Projects = () => {
                 <div className={'w-full flex pl-20'}>
                     <button className={'border-2 p-5'}> Add new </button>
                 </div>
-                <div className={'flex flex-col justify-center w-full p-20'}>
+                <div className={'flex flex-col justify-center w-full p-20 overflow-scroll'}>
                     {projectList.map((item, index) => (
                         <ProjectBar project={item} key={index} />
                     ))}
