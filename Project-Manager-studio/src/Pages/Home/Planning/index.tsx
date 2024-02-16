@@ -16,9 +16,10 @@ const Planning = () => {
         const makeTaskList = async () => {
             const allTaskList = await GetTaskData();
             setTaskList(allTaskList);
-            triggerTaskChange2(!taskChange2);
+            //triggerTaskChange2(!taskChange2);
         }
         makeTaskList();
+        //console.log("called 1")
     }, [taskChange]);
 
     useEffect(() => {
@@ -28,7 +29,8 @@ const Planning = () => {
         setProgressTaskList(progressList);
         const completeList = GetTaskComplete(taskList);
         setCompleteTaskList(completeList);
-    }, [taskChange2]);
+        //console.log("called")
+    }, [taskList]);
 
     const handleOnDrop = async (e: React.DragEvent, boxStatus: string) => {
         const taskID = e.dataTransfer.getData("TaskDataTransfer") as string;
@@ -37,6 +39,8 @@ const Planning = () => {
             targetTask.status = boxStatus;
             await ChangeTaskStatus(targetTask);
             triggerTaskChange(!taskChange);
+            const allTaskList = await GetTaskData();
+            setTaskList(allTaskList);
         }
     }
 
