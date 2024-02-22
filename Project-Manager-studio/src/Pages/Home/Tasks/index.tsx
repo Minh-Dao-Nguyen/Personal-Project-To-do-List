@@ -16,13 +16,11 @@ const Tasks = () => {
 
     return (
         <div className={`h-full w-full bg-primary-gray flex justify-center`}>
-            <div className={'w-full h-full flex-col flex justify-center'}>
-                <div className={'w-full flex pl-20 mt-10 '}>
+            <div className={'w-full h-full flex-col flex justify-center overflow-y-scroll'}>
+                <div className={'w-full flex pl-20 mt-60'}>
                     <button className={'border-2 p-5'}> Add new </button>
                 </div>
-                <div className={'flex flex-col justify-center w-full p-20 overflow-scroll mt-10'}>
-                    <div className={'p-10'}>
-                    </div>
+                <div className={'flex flex-col justify-center w-full h-full p-20'}>
                     {taskList.map((item, index) => (
                         <TaskBar task={item} key={index} />
                     ))}
